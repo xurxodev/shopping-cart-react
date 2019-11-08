@@ -11,7 +11,6 @@ import {
   Button,
   Box
 } from "@material-ui/core";
-import { textAlign } from "@material-ui/system";
 
 //import tileData from './tileData';
 
