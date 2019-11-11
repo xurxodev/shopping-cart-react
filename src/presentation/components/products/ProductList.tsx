@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Grid, Typography, Box } from "@material-ui/core";
-import GetProductsUseCase from "../core/domain/GetProductsUseCase";
-import Product from "../core/domain/Product";
+import GetProductsUseCase from "../../../domain/products/GetProductsUseCase";
+import Product from "../../../domain/products/Product";
 import ProductItem from "./ProductItem";
 
 const useStyles = makeStyles(theme => ({

@@ -1,5 +1,5 @@
-import ProductRepository from "../domain/ProductRepository";
-import Product from "../domain/Product";
+import ProductRepository from "../../domain/products/ProductRepository";
+import Product from "../../domain/products/Product";
 
 const products = [
     {

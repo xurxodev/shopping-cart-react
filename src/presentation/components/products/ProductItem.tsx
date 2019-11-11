@@ -9,7 +9,7 @@ import {
   CardActions,
   Button,
 } from "@material-ui/core";
-import Product from "../core/domain/Product";
+import Product from "../../../domain/products/Product";
 
 const useStyles = makeStyles(theme => ({
   card: {
