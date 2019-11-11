@@ -1,9 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container, Grid, Typography, Box } from "@material-ui/core";
-import GetProductsUseCase from "../../../domain/products/GetProductsUseCase";
-import Product from "../../../domain/products/Product";
+import {
+  Container,
+  Grid,
+  Typography,
+  Box,
+  CircularProgress
+} from "@material-ui/core";
 import ProductItem from "./ProductItem";
+import { ProductsPresenter } from "../ProductsPresenter";
+import ProductsState from "../ProductsState";
 
 const useStyles = makeStyles(theme => ({
   titleContainer: {
@@ -16,45 +22,58 @@ const useStyles = makeStyles(theme => ({
 }));
 
 interface AppProps {
-  getProductsUseCase: GetProductsUseCase;
+  productsPresenter: ProductsPresenter;
 }
 
-const ProductList: React.FC<AppProps> = ({ getProductsUseCase }) => {
-  const [products, setProducts] = React.useState<Product[]>([]);
+const ProductList: React.FC<AppProps> = ({ productsPresenter }) => {
+  const [state, setState] = React.useState<ProductsState>({
+    loading: false,
+    error: "",
+    products: []
+  });
 
   React.useEffect(() => {
-    const retrieveProducts = async () => {
-      const products = await getProductsUseCase.execute("Element");
-      setProducts(products);
+    const searchProducts = async (filter: string) => {
+      productsPresenter.search(filter);
     };
 
-    retrieveProducts();
-  }, [getProductsUseCase]);
+    productsPresenter.init(onSearchComplete);
+
+    searchProducts("Element");
+  }, [productsPresenter]);
+
+  const onSearchComplete = (state: ProductsState) => setState(state);
 
   const classes = useStyles();
 
-  return (
-    <Container className={classes.cardGrid} maxWidth="xl">
-      <Box className={classes.titleContainer}>
-        <Typography display="inline" variant="h6" component="h2">
-          Resultados para{" "}
-        </Typography>
-        <Typography
-          color="primary"
-          display="inline"
-          variant="h6"
-          component="h2"
-        >
-          "Element"
-        </Typography>
-      </Box>
-      <Grid container spacing={2}>
-        {products.map(product => (
-          <ProductItem product={product} />
-        ))}
-      </Grid>
-    </Container>
-  );
+  if (state.loading) {
+    return <CircularProgress />;
+  } else if (state.error) {
+    return <span>{state.error}</span>;
+  } else {
+    return (
+      <Container className={classes.cardGrid} maxWidth="xl">
+        <Box className={classes.titleContainer}>
+          <Typography display="inline" variant="h6" component="h2">
+            Resultados para{" "}
+          </Typography>
+          <Typography
+            color="primary"
+            display="inline"
+            variant="h6"
+            component="h2"
+          >
+            "Element"
+          </Typography>
+        </Box>
+        <Grid container spacing={2}>
+          {state.products.map(product => (
+            <ProductItem product={product} />
+          ))}
+        </Grid>
+      </Container>
+    );
+  }
 };
 
 export default ProductList;

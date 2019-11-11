@@ -5,12 +5,12 @@ import * as DependenciesProvider from "../../di/DependenciesProvider"
 
 const App: React.FC = () => {
  
-  const getProductsUseCase = DependenciesProvider.provideGetProductUseCase();
+  const productsPresenter = DependenciesProvider.provideProductsPresenter();
 
   return (
     <div>
       <MyAppBar />
-      <ProductList getProductsUseCase={getProductsUseCase}/>
+      <ProductList productsPresenter={productsPresenter}/>
     </div>
   );
 };
