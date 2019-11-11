@@ -1,7 +1,7 @@
 import React from "react";
 import MyAppBar from "../appbar/MyAppBar";
-import ProductList from "../products/ProductList";
-import * as DependenciesProvider from "../../../di/DependenciesProvider"
+import ProductList from "../products/components/ProductList";
+import * as DependenciesProvider from "../../di/DependenciesProvider"
 
 const App: React.FC = () => {
  
