@@ -1,15 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  Container,
+  CircularProgress,
   Grid,
-  Typography,
+  Container,
   Box,
-  CircularProgress
+  Typography
 } from "@material-ui/core";
 import ProductItem from "./ProductItem";
 import { ProductsPresenter } from "../ProductsPresenter";
 import ProductsState from "../ProductsState";
+import { height } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
   titleContainer: {
@@ -18,6 +19,12 @@ const useStyles = makeStyles(theme => ({
   cardGrid: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4)
+  },
+  infoContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh"
   }
 }));
 
@@ -47,9 +54,19 @@ const ProductList: React.FC<AppProps> = ({ productsPresenter }) => {
   const classes = useStyles();
 
   if (state.loading) {
-    return <CircularProgress />;
+    return (
+      <div className={classes.infoContainer}>
+        <CircularProgress />
+      </div>
+    );
   } else if (state.error) {
-    return <span>{state.error}</span>;
+    return (
+      <div className={classes.infoContainer}>
+        <Typography display="inline" variant="h5" component="h2">
+          {state.error}
+        </Typography>
+      </div>
+    );
   } else {
     return (
       <Container className={classes.cardGrid} maxWidth="xl">
