@@ -14,7 +14,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-const MyAppBar: React.FC = () => {
+interface AppProps {
+  onShoppingCartHandler: ()=> void;
+}
+
+const MyAppBar: React.FC<AppProps> = ({onShoppingCartHandler}) => {
   const classes = useStyles();
 
   return (
@@ -23,7 +27,7 @@ const MyAppBar: React.FC = () => {
         <img src={logo} width={150} alt="logo" />
         <IconButton color="inherit">
           <Badge badgeContent={17} color="secondary">
-            <ShoppingCartIcon />
+            <ShoppingCartIcon onClick={onShoppingCartHandler} />
           </Badge>
         </IconButton>
       </Toolbar>
