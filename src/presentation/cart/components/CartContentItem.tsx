@@ -5,12 +5,11 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
-  Divider,
   TextField,
   Paper
 } from "@material-ui/core";
 import RemoveIcon from "@material-ui/icons/Clear";
-import ShoppingCartItem from "../../../domain/shoppingcart/ShoppingCartItem";
+import CartItem from "../../../domain/cart/CartItem";
 
 const useStyles = makeStyles((theme: Theme) => ({
   itemContainer: {
@@ -25,14 +24,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-interface ShoppingCartProps {
+interface CartProps {
   key: Key;
-  cartItem: ShoppingCartItem;
-  onRemoveCartItem: (item: ShoppingCartItem) => void;
-  onEditQuantityCartItem: (item: ShoppingCartItem, quantity: number) => void;
+  cartItem: CartItem;
+  onRemoveCartItem: (item: CartItem) => void;
+  onEditQuantityCartItem: (item: CartItem, quantity: number) => void;
 }
 
-const ShoppingCartContentItem: React.FC<ShoppingCartProps> = ({
+const CartContentItem: React.FC<CartProps> = ({
   key,
   cartItem,
   onRemoveCartItem,
@@ -82,4 +81,4 @@ const ShoppingCartContentItem: React.FC<ShoppingCartProps> = ({
   );
 };
 
-export default ShoppingCartContentItem;
+export default CartContentItem;

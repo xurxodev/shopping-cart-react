@@ -1,9 +1,9 @@
 import React from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import { List, Divider, Box, Typography } from "@material-ui/core";
-import ShoppingCart from "../../../domain/shoppingcart/ShoppingCart";
-import ShoppingCartContentItem from "./ShoppingCartContentItem";
-import ShoppingCartItem from "../../../domain/shoppingcart/ShoppingCartItem";
+import Cart from "../../../domain/cart/Cart";
+import CartContentItem from "./CartContentItem";
+import CartItem from "../../../domain/cart/CartItem";
 
 const useStyles = makeStyles((theme: Theme) => ({
   totalPriceContainer: {
@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-interface ShoppingCartProps {
-  cart: ShoppingCart;
-  onRemoveCartItem: (item: ShoppingCartItem) => void;
-  onEditQuantityCartItem: (item: ShoppingCartItem, quantity: number) => void;
+interface CartProps {
+  cart: Cart;
+  onRemoveCartItem: (item: CartItem) => void;
+  onEditQuantityCartItem: (item: CartItem, quantity: number) => void;
 }
 
-const ShoppingCartContent: React.FC<ShoppingCartProps> = ({
+const CartContent: React.FC<CartProps> = ({
   cart,
   onRemoveCartItem,
   onEditQuantityCartItem
@@ -38,7 +38,7 @@ const ShoppingCartContent: React.FC<ShoppingCartProps> = ({
   const cartItems = () => (
     <List>
       {cart.items.map((item, index) => (
-        <ShoppingCartContentItem
+        <CartContentItem
           key={index}
           cartItem={item}
           onRemoveCartItem={onRemoveCartItem}
@@ -74,4 +74,4 @@ const ShoppingCartContent: React.FC<ShoppingCartProps> = ({
   );
 };
 
-export default ShoppingCartContent;
+export default CartContent;

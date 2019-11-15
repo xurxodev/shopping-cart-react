@@ -9,9 +9,9 @@ import {
 } from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import ShoppingCartContent from "./ShoppingCartContent";
-import ShoppingCart from "../../../domain/shoppingcart/ShoppingCart";
-import ShoppingCartItem from "../../../domain/shoppingcart/ShoppingCartItem";
+import CartContent from "./CartContent";
+import Cart from "../../../domain/cart/Cart";
+import CartItem from "../../../domain/cart/CartItem";
 
 const drawerWidth = 350;
 
@@ -39,15 +39,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-interface ShoppingCartProps {
-  cart: ShoppingCart;
+interface CartDrawerProps {
+  cart: Cart;
   open: boolean;
   onClose: () => void;
-  onRemoveCartItem: (item: ShoppingCartItem) => void;
-  onEditQuantityCartItem: (item: ShoppingCartItem, quantity: number) => void;
+  onRemoveCartItem: (item: CartItem) => void;
+  onEditQuantityCartItem: (item: CartItem, quantity: number) => void;
 }
 
-const ShoppingCartDrawer: React.FC<ShoppingCartProps> = ({
+const CartDrawer: React.FC<CartDrawerProps> = ({
   cart,
   open,
   onClose,
@@ -78,7 +78,7 @@ const ShoppingCartDrawer: React.FC<ShoppingCartProps> = ({
         </Box>
       </Box>
       <Divider />
-      <ShoppingCartContent
+      <CartContent
         cart={cart}
         onRemoveCartItem={onRemoveCartItem}
         onEditQuantityCartItem={onEditQuantityCartItem}
@@ -87,4 +87,4 @@ const ShoppingCartDrawer: React.FC<ShoppingCartProps> = ({
   );
 };
 
-export default ShoppingCartDrawer;
+export default CartDrawer;

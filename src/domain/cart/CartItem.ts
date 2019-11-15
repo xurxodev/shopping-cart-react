@@ -1,4 +1,4 @@
-export default interface ShoppingCartItem {
+export default interface CartItem {
     readonly id: string,
     readonly image: string,
     readonly title: string,

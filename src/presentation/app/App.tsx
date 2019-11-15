@@ -1,10 +1,10 @@
 import React from "react";
 import MyAppBar from "../appbar/MyAppBar";
 import ProductList from "../products/components/ProductList";
-import ShoppingCartDrawer from "../shoppingcart/components/ShoppingCartDrawer";
+import CartDrawer from "../cart/components/CartDrawer";
 import * as DependenciesProvider from "../../di/DependenciesProvider";
-import ShoppingCart from "../../domain/shoppingcart/ShoppingCart";
-import ShoppingCartItem from "../../domain/shoppingcart/ShoppingCartItem";
+import Cart from "../../domain/cart/Cart";
+import CartItem from "../../domain/cart/CartItem";
 
 const cartItems = [
   {
@@ -31,7 +31,7 @@ const cartItems = [
 
 const App: React.FC = () => {
   const [open, setOpen] = React.useState(false);
-  const [cart, setCart] = React.useState(new ShoppingCart(cartItems));
+  const [cart, setCart] = React.useState(new Cart(cartItems));
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -41,12 +41,12 @@ const App: React.FC = () => {
     setOpen(false);
   };
 
-  const handleRemoveCartItem = (item: ShoppingCartItem) => {
+  const handleRemoveCartItem = (item: CartItem) => {
     setCart(cart.removeItem(item));
   };
 
   const handleEditQuantityCartItem = (
-    item: ShoppingCartItem,
+    item: CartItem,
     quantity: number
   ) => {
     setCart(cart.editItem(item, quantity));
@@ -58,7 +58,7 @@ const App: React.FC = () => {
     <div>
       <MyAppBar onShoppingCartHandler={handleDrawerOpen} totalCartItems={cart.totalItems} />
       <ProductList productsPresenter={productsPresenter} />
-      <ShoppingCartDrawer
+      <CartDrawer
         cart={cart}
         open={open}
         onClose={handleDrawerClose}

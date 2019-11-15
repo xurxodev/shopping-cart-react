@@ -10,7 +10,6 @@ import {
 import ProductItem from "./ProductItem";
 import { ProductsPresenter } from "../ProductsPresenter";
 import ProductsState from "../ProductsState";
-import { height } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
   titleContainer: {
@@ -84,8 +83,8 @@ const ProductList: React.FC<AppProps> = ({ productsPresenter }) => {
           </Typography>
         </Box>
         <Grid container spacing={2}>
-          {state.products.map(product => (
-            <ProductItem product={product} />
+          {state.products.map((product,index) => (
+            <ProductItem product={product} key={index}/>
           ))}
         </Grid>
       </Container>

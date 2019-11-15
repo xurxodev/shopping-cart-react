@@ -1,21 +1,21 @@
-import ShoppingCartItem from "./ShoppingCartItem";
+import CartItem from "./CartItem";
 
-export default class ShoppingCart {
-    items: readonly ShoppingCartItem[];
+export default class Cart {
+    items: readonly CartItem[];
     readonly totalPrice: number;
     readonly totalItems: number;
 
-    constructor(items: ShoppingCartItem[]) {
+    constructor(items: CartItem[]) {
         this.items = items;
         this.totalPrice = this.calculateTotalPrice(items);
         this.totalItems = this.calculateTotalItems(items);
     }
 
-    static createEmpty(): ShoppingCart {
-        return new ShoppingCart([]);
+    static createEmpty(): Cart {
+        return new Cart([]);
     }
 
-    addItem(item: ShoppingCartItem): ShoppingCart {
+    addItem(item: CartItem): Cart {
         const existedItem = this.items.find(i => i.id === item.id);
 
         if (existedItem) {
@@ -27,21 +27,21 @@ export default class ShoppingCart {
                 }
             });
 
-            return new ShoppingCart(newItems);
+            return new Cart(newItems);
         } else {
             const newItems = [...this.items, item];
 
-            return new ShoppingCart(newItems);
+            return new Cart(newItems);
         }
     }
 
-    removeItem(item: ShoppingCartItem): ShoppingCart {
+    removeItem(item: CartItem): Cart {
         const newItems = this.items.filter(i => i.id !== item.id);
 
-        return new ShoppingCart(newItems);
+        return new Cart(newItems);
     }
 
-    editItem(item: ShoppingCartItem, quantity: number): ShoppingCart {
+    editItem(item: CartItem, quantity: number): Cart {
         const newItems = this.items.map((oldItem) => {
             if (oldItem.id === item.id) {
                 return { ...oldItem, quantity: quantity };
@@ -50,15 +50,15 @@ export default class ShoppingCart {
             }
         });
 
-        return new ShoppingCart(newItems);
+        return new Cart(newItems);
     }
 
-    private calculateTotalPrice(items: ShoppingCartItem[]): number {
+    private calculateTotalPrice(items: CartItem[]): number {
         return +items.reduce((accumulator, item) =>
             accumulator + (item.quantity * item.price), 0).toFixed(2);
     }
 
-    private calculateTotalItems(items: ShoppingCartItem[]): number {
+    private calculateTotalItems(items: CartItem[]): number {
         return +items.reduce((accumulator, item) =>
             accumulator + item.quantity, 0);
     }
