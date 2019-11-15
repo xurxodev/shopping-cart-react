@@ -10,6 +10,7 @@ describe('shopping cart', () => {
 
       expect(shoppingCart.items).toEqual([]);
       expect(shoppingCart.totalPrice).toEqual(0);
+      expect(shoppingCart.totalItems).toEqual(0);
     });
 
     it('should return totalPrice equal to item price and item if shopping cart is created using constructor with 1 item', () => {
@@ -18,6 +19,7 @@ describe('shopping cart', () => {
 
       expect(shoppingCart.items).toEqual(items);
       expect(shoppingCart.totalPrice).toEqual(29.99);
+      expect(shoppingCart.totalItems).toEqual(1);
     });
 
     it('should return expected totalPrice and items if shopping cart is created using constructor with 2 items with quantity = 1', () => {
@@ -26,6 +28,7 @@ describe('shopping cart', () => {
 
       expect(shoppingCart.items).toEqual((items));
       expect(shoppingCart.totalPrice).toEqual(69.93);
+      expect(shoppingCart.totalItems).toEqual(2);
     });
 
     it('should return expected totalPrice and items if shopping cart is created using constructor with 2 items witn quantity > 1', () => {
@@ -34,6 +37,7 @@ describe('shopping cart', () => {
 
       expect(shoppingCart.items).toEqual(items);
       expect(shoppingCart.totalPrice).toEqual(259.68);
+      expect(shoppingCart.totalItems).toEqual(7);
     });
 
   });
@@ -44,6 +48,7 @@ describe('shopping cart', () => {
 
       expect(shoppingCart.items).toEqual([]);
       expect(shoppingCart.totalPrice).toEqual(0);
+      expect(shoppingCart.totalItems).toEqual(0);
     });
   });
 
@@ -51,12 +56,12 @@ describe('shopping cart', () => {
     it('should return expected totalPrice and items if item with quantity 1 is added', () => {
       const items = [givenAShoppingCartItem(1, 29.99)];
       const shoppingCart = new ShoppingCart(items);
-      const newShoppingCart = shoppingCart.addItem(givenAShoppingCartItem(39.94, 1));
+      const newShoppingCart = shoppingCart.addItem(givenAShoppingCartItem(1, 39.94));
 
       expect(newShoppingCart.items).toHaveLength(2);
       expect(newShoppingCart.totalPrice).toEqual(69.93);
+      expect(newShoppingCart.totalItems).toEqual(2);
     });
-
 
     it('should return expected totalPrice and items if item with quantity > 1 is added', () => {
       const items = [givenAShoppingCartItem(1, 29.99)];
@@ -65,6 +70,7 @@ describe('shopping cart', () => {
 
       expect(newShoppingCart.items).toHaveLength(2);
       expect(newShoppingCart.totalPrice).toEqual(149.81);
+      expect(newShoppingCart.totalItems).toEqual(4);
     });
 
     it('should increment quantity to existed item and totalPrice if add a existed item again', () => {
@@ -74,6 +80,7 @@ describe('shopping cart', () => {
 
       expect(newShoppingCart.items).toHaveLength(1);
       expect(newShoppingCart.totalPrice).toEqual(59.98);
+      expect(newShoppingCart.totalItems).toEqual(2);
     });
   });
 
@@ -83,9 +90,9 @@ describe('shopping cart', () => {
       const shoppingCart = new ShoppingCart(items);
       const newShoppingCart = shoppingCart.removeItem(items[0]);
 
-
       expect(newShoppingCart.items).toEqual([]);
       expect(newShoppingCart.totalPrice).toEqual(0);
+      expect(newShoppingCart.totalItems).toEqual(0);
     });
 
 
@@ -96,6 +103,7 @@ describe('shopping cart', () => {
 
       expect(newShoppingCart.items).toHaveLength(1);
       expect(newShoppingCart.totalPrice).toEqual(29.99);
+      expect(newShoppingCart.totalItems).toEqual(1);
     });
   });
 
@@ -108,6 +116,7 @@ describe('shopping cart', () => {
 
       expect(newShoppingCart.items).toHaveLength(1)
       expect(newShoppingCart.totalPrice).toEqual(59.98);
+      expect(newShoppingCart.totalItems).toEqual(2);
     });
 
 
@@ -119,6 +128,7 @@ describe('shopping cart', () => {
 
       expect(newShoppingCart.items).toHaveLength(2)
       expect(newShoppingCart.totalPrice).toEqual(259.68);
+      expect(newShoppingCart.totalItems).toEqual(7);
     });
   });
 });

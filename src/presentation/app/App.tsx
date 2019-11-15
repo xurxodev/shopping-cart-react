@@ -56,7 +56,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <MyAppBar onShoppingCartHandler={handleDrawerOpen} />
+      <MyAppBar onShoppingCartHandler={handleDrawerOpen} totalCartItems={cart.totalItems} />
       <ProductList productsPresenter={productsPresenter} />
       <ShoppingCartDrawer
         cart={cart}

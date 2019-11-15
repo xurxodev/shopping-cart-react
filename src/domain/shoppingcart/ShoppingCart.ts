@@ -3,10 +3,12 @@ import ShoppingCartItem from "./ShoppingCartItem";
 export default class ShoppingCart {
     items: readonly ShoppingCartItem[];
     readonly totalPrice: number;
+    readonly totalItems: number;
 
     constructor(items: ShoppingCartItem[]) {
         this.items = items;
-        this.totalPrice = this.calculatePrice(items);
+        this.totalPrice = this.calculateTotalPrice(items);
+        this.totalItems = this.calculateTotalItems(items);
     }
 
     static createEmpty(): ShoppingCart {
@@ -51,9 +53,14 @@ export default class ShoppingCart {
         return new ShoppingCart(newItems);
     }
 
-    private calculatePrice(items: ShoppingCartItem[]): number {
+    private calculateTotalPrice(items: ShoppingCartItem[]): number {
         return +items.reduce((accumulator, item) =>
             accumulator + (item.quantity * item.price), 0).toFixed(2);
+    }
+
+    private calculateTotalItems(items: ShoppingCartItem[]): number {
+        return +items.reduce((accumulator, item) =>
+            accumulator + item.quantity, 0);
     }
 }
 
