@@ -3,7 +3,7 @@ import CartItem from "./CartItem";
 export default class Cart {
     items: readonly CartItem[];
     readonly totalPrice: number;
-    readonly totalItems: number;
+    readonly totalItems: number; 
 
     constructor(items: CartItem[]) {
         this.items = items;

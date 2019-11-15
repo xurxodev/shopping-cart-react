@@ -8,8 +8,8 @@ import {
   Typography
 } from "@material-ui/core";
 import ProductItem from "./ProductItem";
-import { ProductsPresenter } from "../ProductsPresenter";
 import ProductsState from "../ProductsState";
+import { ProductsPresenter } from "../ProductsPresenter";
 
 const useStyles = makeStyles(theme => ({
   titleContainer: {
@@ -27,11 +27,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-interface AppProps {
+interface ProductListProps {
   productsPresenter: ProductsPresenter;
 }
+const ProductList: React.FC<ProductListProps> = ({productsPresenter}) => {
 
-const ProductList: React.FC<AppProps> = ({ productsPresenter }) => {
   const [state, setState] = React.useState<ProductsState>({
     loading: false,
     error: "",
@@ -83,8 +83,8 @@ const ProductList: React.FC<AppProps> = ({ productsPresenter }) => {
           </Typography>
         </Box>
         <Grid container spacing={2}>
-          {state.products.map((product,index) => (
-            <ProductItem product={product} key={index}/>
+          {state.products.map((product, index) => (
+            <ProductItem product={product} key={index} />
           ))}
         </Grid>
       </Container>

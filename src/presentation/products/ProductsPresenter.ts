@@ -1,10 +1,6 @@
 import GetProductsUseCase from "../../domain/products/GetProductsUseCase";
 import ProductsState from "./ProductsState";
 
-export interface ProductsView {
-    render(productsState: ProductsState): void;
-}
-
 export type OnSearchHandler = (productsState: ProductsState) => void;
 
 export class ProductsPresenter {
