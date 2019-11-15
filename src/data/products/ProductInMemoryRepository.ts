@@ -125,7 +125,7 @@ export default class ProductInMemoryRepository implements ProductRepository {
                 } else {
                     resolve(products);
                 }
-            }, 500);
+            }, 100);
         });
     }
 }

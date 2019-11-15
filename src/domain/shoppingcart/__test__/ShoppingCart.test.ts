@@ -104,8 +104,7 @@ describe('shopping cart', () => {
       const items = [givenAShoppingCartItem(1, 29.99)];
       const shoppingCart = new ShoppingCart(items);
 
-      const editedItem = { ...items[0], quantity: 2 };
-      const newShoppingCart = shoppingCart.editItem(editedItem);
+      const newShoppingCart = shoppingCart.editItem(items[0],2);
 
       expect(newShoppingCart.items).toHaveLength(1)
       expect(newShoppingCart.totalPrice).toEqual(59.98);
@@ -116,8 +115,7 @@ describe('shopping cart', () => {
       const items = [givenAShoppingCartItem(1, 29.99), givenAShoppingCartItem(5, 39.94)];
       const shoppingCart = new ShoppingCart(items);
 
-      const editedItem = { ...items[0], quantity: 2 };
-      const newShoppingCart = shoppingCart.editItem(editedItem);
+      const newShoppingCart = shoppingCart.editItem(items[0],2);
 
       expect(newShoppingCart.items).toHaveLength(2)
       expect(newShoppingCart.totalPrice).toEqual(259.68);

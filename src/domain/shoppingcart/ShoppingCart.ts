@@ -39,10 +39,10 @@ export default class ShoppingCart {
         return new ShoppingCart(newItems);
     }
 
-    editItem(item: ShoppingCartItem): ShoppingCart {
+    editItem(item: ShoppingCartItem, quantity: number): ShoppingCart {
         const newItems = this.items.map((oldItem) => {
             if (oldItem.id === item.id) {
-                return { ...oldItem, quantity: item.quantity };
+                return { ...oldItem, quantity: quantity };
             } else {
                 return oldItem;
             }
