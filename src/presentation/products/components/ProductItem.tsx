@@ -7,7 +7,7 @@ import {
   CardContent,
   Typography,
   CardActions,
-  Button,
+  Button
 } from "@material-ui/core";
 import Product from "../../../domain/products/Product";
 
@@ -62,7 +62,10 @@ const ProductItem: React.FC<ProductListProps> = ({ product }) => {
             {product.title}
           </Typography>
           <Typography variant="h6" className={classes.productPrice}>
-            {product.price}
+            {product.price.toLocaleString("es-ES", {
+              style: "currency",
+              currency: "EUR"
+            })}
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>

@@ -3,9 +3,7 @@ import CartRepository from "../../domain/cart/CartRepository";
 
 const initialCart = new Cart( [
     {
-      id: Math.random()
-        .toString(36)
-        .substr(2, 9),
+      id: "1",
       image:
         "https://m.media-amazon.com/images/I/81oKhu2bsgL._AC_UL640_FMwebp_QL65_.jpg",
       title: "Element Blazin LS tee Shirt, Hombre",
@@ -13,9 +11,7 @@ const initialCart = new Cart( [
       quantity: 3
     },
     {
-      id: Math.random()
-        .toString(36)
-        .substr(2, 9),
+      id: "2",
       image:
         "https://m.media-amazon.com/images/I/81HnHYik58L._AC_UL640_FMwebp_QL65_.jpg",
       title: "Element Vertical SS tee Shirt, Hombre",

@@ -61,13 +61,16 @@ const CartContent: React.FC<CartProps> = ({
       <Box flexDirection="column" className={classes.itemsContainer}>
         {cart.items.length > 0 ? cartItems() : emptyCartItems()}
       </Box>
-      <Divider/>
+      <Divider />
       <Box flexDirection="row" className={classes.totalPriceContainer}>
         <Typography variant="h6" component="h2">
           Total Price
         </Typography>
         <Typography variant="h6" component="h2">
-          {`${cart.totalPrice.toLocaleString("es-ES")} €`}
+          {cart.totalPrice.toLocaleString("es-ES", {
+            style: "currency",
+            currency: "EUR"
+          })}
         </Typography>
       </Box>
     </React.Fragment>
