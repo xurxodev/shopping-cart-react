@@ -10,6 +10,7 @@ import {
 import ProductItem from "./ProductItem";
 import ProductsState from "../ProductsState";
 import { ProductsPresenter } from "../ProductsPresenter";
+import Product from "../../../domain/products/Product";
 
 const useStyles = makeStyles(theme => ({
   titleContainer: {
@@ -29,9 +30,9 @@ const useStyles = makeStyles(theme => ({
 
 interface ProductListProps {
   productsPresenter: ProductsPresenter;
+  onAddProductToCart: (product: Product) => void;
 }
-const ProductList: React.FC<ProductListProps> = ({productsPresenter}) => {
-
+const ProductList: React.FC<ProductListProps> = ({ productsPresenter, onAddProductToCart}) => {
   const [state, setState] = React.useState<ProductsState>({
     loading: false,
     error: "",
@@ -84,7 +85,7 @@ const ProductList: React.FC<ProductListProps> = ({productsPresenter}) => {
         </Box>
         <Grid container spacing={2}>
           {state.products.map((product, index) => (
-            <ProductItem product={product} key={index} />
+            <ProductItem product={product} key={index} onAddProductToCart={onAddProductToCart}/>
           ))}
         </Grid>
       </Container>

@@ -17,8 +17,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     padding: theme.spacing(1, 0),
     justifyContent: "space-around",
-    minHeight: 150,
-    maxHeight: 600
+    minHeight: 150
+  },
+  itemsList: {
+    overflow: "scroll"
   }
 }));
 
@@ -36,7 +38,7 @@ const CartContent: React.FC<CartProps> = ({
   const classes = useStyles();
 
   const cartItems = () => (
-    <List>
+    <List className={classes.itemsList}>
       {cart.items.map((item, index) => (
         <CartContentItem
           key={index}

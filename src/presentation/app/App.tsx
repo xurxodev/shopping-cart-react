@@ -7,6 +7,7 @@ import Cart from "../../domain/cart/Cart";
 import CartItem from "../../domain/cart/CartItem";
 import CartState from "../cart/CartState";
 import { CartPresenter } from "../cart/CartPresenter";
+import Product from "../../domain/products/Product";
 
 interface AppProps {
   cartPresenter: CartPresenter;
@@ -33,6 +34,10 @@ const App: React.FC <AppProps>= ({cartPresenter}) => {
     cartPresenter.editQuantityCartItem(item, quantity);
   };
 
+  const handleAddProductToCart = (product: Product) => {
+    cartPresenter.addProductToCart(product);
+  };
+
   const handleDrawerOpen = () => {
     cartPresenter.openCart();
   };
@@ -49,7 +54,7 @@ const App: React.FC <AppProps>= ({cartPresenter}) => {
         onShoppingCartHandler={handleDrawerOpen}
         totalCartItems={cartState.cart.totalItems}
       />
-      <ProductList productsPresenter={productsPresenter}/>
+      <ProductList productsPresenter={productsPresenter} onAddProductToCart={handleAddProductToCart}/>
       <CartDrawer
         cart={cartState.cart}
         open={cartState.open}

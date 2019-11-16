@@ -40,9 +40,13 @@ const useStyles = makeStyles(theme => ({
 
 interface ProductListProps {
   product: Product;
+  onAddProductToCart: (product: Product) => void;
 }
 
-const ProductItem: React.FC<ProductListProps> = ({ product }) => {
+const ProductItem: React.FC<ProductListProps> = ({
+  product,
+  onAddProductToCart
+}) => {
   const classes = useStyles();
 
   return (
@@ -69,7 +73,11 @@ const ProductItem: React.FC<ProductListProps> = ({ product }) => {
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary">
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => onAddProductToCart(product)}
+          >
             Add to Cart
           </Button>
         </CardActions>

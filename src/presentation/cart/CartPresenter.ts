@@ -1,12 +1,20 @@
-import GetCartUseCase from "../../domain/cart/GetCartUseCase";
+import GetCartUseCase from "../../domain/cart/usecases/GetCartUseCase";
 import CartState from "./CartState";
 import Cart from "../../domain/cart/Cart";
 import CartItem from "../../domain/cart/CartItem";
+import AddProductToCartUseCase from "../../domain/cart/usecases/AddProductToCartUseCase";
+import Product from "../../domain/products/Product";
+import RemoveItemFromCartUseCase from "../../domain/cart/usecases/RemoveItemFromCartUseCase";
+import EditQuantityOfCartItemUseCase from "../../domain/cart/usecases/EditQuantityOfCartItemUseCase";
 
 export type OnCartChangeHandler = (cartState: CartState) => void;
 
 export class CartPresenter {
     getCartUseCase: GetCartUseCase;
+    addProductToCartUseCase: AddProductToCartUseCase;
+    removeItemFromCartUseCase: RemoveItemFromCartUseCase;
+    editQuantityOfCartItemUseCase: EditQuantityOfCartItemUseCase;
+
     onCartChangeHandler: OnCartChangeHandler | undefined = undefined;
 
     cartState = {
@@ -14,8 +22,16 @@ export class CartPresenter {
         cart: Cart.createEmpty()
     };
 
-    constructor(getCartUseCase: GetCartUseCase) {
+    constructor(
+        getCartUseCase: GetCartUseCase,
+        addProductToCartUseCase: AddProductToCartUseCase,
+        removeItemFromCartUseCase: RemoveItemFromCartUseCase,
+        editQuantityOfCartItemUseCase: EditQuantityOfCartItemUseCase) {
+
         this.getCartUseCase = getCartUseCase;
+        this.addProductToCartUseCase = addProductToCartUseCase;
+        this.removeItemFromCartUseCase = removeItemFromCartUseCase;
+        this.editQuantityOfCartItemUseCase = editQuantityOfCartItemUseCase;
     }
 
     init(onCartChangeHandler: OnCartChangeHandler) {
@@ -36,28 +52,43 @@ export class CartPresenter {
     }
 
     removeCartItem(item: CartItem) {
-        this.cartState = { ...this.cartState, cart: this.cartState.cart.removeItem(item) }
+        this.removeItemFromCartUseCase.execute(item)
+            .then(cart => {
+                this.cartState = { ...this.cartState, cart: cart }
 
-        this.render(this.cartState);
+                this.render(this.cartState);
+            })
     }
 
     editQuantityCartItem(item: CartItem, quantity: number) {
-        this.cartState = { ...this.cartState, cart: this.cartState.cart.editItem(item, quantity) }
+        this.editQuantityOfCartItemUseCase.execute(item, quantity)
+            .then(cart => {
+                this.cartState = { ...this.cartState, cart: cart }
 
-        this.render(this.cartState);
+                this.render(this.cartState);
+            })
+    }
+
+    addProductToCart(product: Product) {
+        this.addProductToCartUseCase.execute(product)
+            .then(cart => {
+                this.cartState = { ...this.cartState, cart: cart }
+
+                this.render(this.cartState);
+            })
     }
 
     private loadCart() {
         this.getCartUseCase.execute()
-        .then(cart => {
-            this.cartState = { ...this.cartState, cart: cart}
+            .then(cart => {
+                this.cartState = { ...this.cartState, cart: cart }
 
-            this.render(this.cartState);
-        }).catch (_error => {
-            this.cartState = { ...this.cartState, cart: Cart.createEmpty()}
+                this.render(this.cartState);
+            }).catch(_error => {
+                this.cartState = { ...this.cartState, cart: Cart.createEmpty() }
 
-            this.render(this.cartState);
-        });
+                this.render(this.cartState);
+            });
     }
 
     private render(cartState: CartState) {

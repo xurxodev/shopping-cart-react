@@ -1,5 +1,5 @@
-import CartRepository from "./CartRepository";
-import Cart from "./Cart";
+import CartRepository from "../CartRepository";
+import Cart from "../Cart";
 
 export default class GetCartUseCase {
     private cartRepository: CartRepository;
