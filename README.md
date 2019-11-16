@@ -4,6 +4,11 @@ Shopping Cart React App is a shopping cart example using React and TypeScript. U
 
 This project was bootstrapped with [Create React App](https://create-react-app.dev/).
 
+## Screenshots
+
+![products](https://user-images.githubusercontent.com/5593590/68997518-cb348980-08a7-11ea-8335-0aa11e861968.png)
+![cart](https://user-images.githubusercontent.com/5593590/68997519-cbcd2000-08a7-11ea-8abb-f234b4548336.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
