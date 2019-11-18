@@ -32,7 +32,10 @@ interface ProductListProps {
   productsPresenter: ProductsPresenter;
   onAddProductToCart: (product: Product) => void;
 }
-const ProductList: React.FC<ProductListProps> = ({ productsPresenter, onAddProductToCart}) => {
+const ProductList: React.FC<ProductListProps> = ({
+  productsPresenter,
+  onAddProductToCart
+}) => {
   const [state, setState] = React.useState<ProductsState>({
     loading: false,
     error: "",
@@ -72,7 +75,7 @@ const ProductList: React.FC<ProductListProps> = ({ productsPresenter, onAddProdu
       <Container className={classes.cardGrid} maxWidth="xl">
         <Box className={classes.titleContainer}>
           <Typography display="inline" variant="h6" component="h2">
-            Resultados para{" "}
+            {"Results for "}
           </Typography>
           <Typography
             color="primary"
@@ -85,7 +88,11 @@ const ProductList: React.FC<ProductListProps> = ({ productsPresenter, onAddProdu
         </Box>
         <Grid container spacing={2}>
           {state.products.map((product, index) => (
-            <ProductItem product={product} key={index} onAddProductToCart={onAddProductToCart}/>
+            <ProductItem
+              product={product}
+              key={index}
+              onAddProductToCart={onAddProductToCart}
+            />
           ))}
         </Grid>
       </Container>

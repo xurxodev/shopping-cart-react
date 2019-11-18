@@ -20,7 +20,6 @@ const App: React.FC <AppProps>= ({cartPresenter}) => {
   });
 
   React.useEffect(() => {
-    console.log("Entra");
     cartPresenter.init(onCartChangeHandler);
   }, [cartPresenter]);
 
