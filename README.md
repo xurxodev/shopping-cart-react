@@ -6,8 +6,8 @@ This project was bootstrapped with [Create React App](https://create-react-app.d
 
 ## Screenshots
 
-![products](https://user-images.githubusercontent.com/5593590/68997518-cb348980-08a7-11ea-8335-0aa11e861968.png)
-![cart](https://user-images.githubusercontent.com/5593590/68997519-cbcd2000-08a7-11ea-8abb-f234b4548336.png)
+![products](https://user-images.githubusercontent.com/5593590/69054813-b0c7f080-0a0c-11ea-99e5-9af5da86d740.png)
+![cart](https://user-images.githubusercontent.com/5593590/69054815-b0c7f080-0a0c-11ea-880d-7f902cfae00d.png)
 
 ## Available Scripts
 
