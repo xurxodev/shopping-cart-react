@@ -1,13 +1,12 @@
 import React from "react";
-import {Bloc} from ".";
 
-export function createBlocContext<T>() {
-    const blocContext = React.createContext<Bloc<T> | undefined>(undefined);
+export function createContext<T>() {
+    const context = React.createContext<T | undefined>(undefined);
 
-    function useBlocContext() {
-        const context = React.useContext(blocContext);
-        if (!context) throw new Error("useBlocContext must be inside a Provider with a value");
-        return context;
+    function useContext() {
+        const ctx = React.useContext(context);
+        if (!ctx) throw new Error("context must be inside a Provider with a value");
+        return ctx;
     }
-    return [blocContext, useBlocContext] as const;
+    return [context, useContext] as const;
 }

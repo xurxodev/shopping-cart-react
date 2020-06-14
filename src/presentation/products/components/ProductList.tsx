@@ -2,7 +2,6 @@ import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {CircularProgress, Grid, Container, Box, Typography} from "@material-ui/core";
 import ProductItem from "./ProductItem";
-import Product from "../../../domain/products/Product";
 import * as DependenciesProvider from "../../../di/DependenciesProvider";
 import {BlocBuilder} from "../../common/bloc";
 import {ProductsState} from "../ProductsState";
@@ -23,10 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-interface ProductListProps {
-    onAddProductToCart: (product: Product) => void;
-}
-const ProductList: React.FC<ProductListProps> = ({onAddProductToCart}) => {
+const ProductList: React.FC = () => {
     const bloc = DependenciesProvider.provideProductsBloc();
     const classes = useStyles();
 
@@ -77,11 +73,7 @@ const ProductList: React.FC<ProductListProps> = ({onAddProductToCart}) => {
                                 </Box>
                                 <Grid container spacing={2}>
                                     {state.products.map((product, index) => (
-                                        <ProductItem
-                                            product={product}
-                                            key={index}
-                                            onAddProductToCart={onAddProductToCart}
-                                        />
+                                        <ProductItem product={product} key={index} />
                                     ))}
                                 </Grid>
                             </Container>

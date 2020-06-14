@@ -2,63 +2,21 @@ import React from "react";
 import MyAppBar from "../appbar/MyAppBar";
 import ProductList from "../products/components/ProductList";
 import CartDrawer from "../cart/components/CartDrawer";
-import Cart from "../../domain/cart/Cart";
-import CartItem from "../../domain/cart/CartItem";
-import CartState from "../cart/CartState";
-import {CartPresenter} from "../cart/CartPresenter";
-import Product from "../../domain/products/Product";
+import {createContext} from "../common/bloc/Context";
+import * as DependenciesProvider from "../../di/DependenciesProvider";
+import {CartBloc} from "../cart/CartBloc";
 
-interface AppProps {
-    cartPresenter: CartPresenter;
-}
+const [blocContext, useBloc] = createContext<CartBloc>();
 
-const App: React.FC<AppProps> = ({cartPresenter}) => {
-    const [cartState, setCartState] = React.useState<CartState>({
-        open: false,
-        cart: Cart.createEmpty(),
-    });
+export const useCartBloc = useBloc;
 
-    React.useEffect(() => {
-        cartPresenter.init(onCartChangeHandler);
-    }, [cartPresenter]);
-
-    const onCartChangeHandler = (cartState: CartState) => setCartState(cartState);
-
-    const handleRemoveCartItem = (item: CartItem) => {
-        cartPresenter.removeCartItem(item);
-    };
-
-    const handleEditQuantityCartItem = (item: CartItem, quantity: number) => {
-        cartPresenter.editQuantityCartItem(item, quantity);
-    };
-
-    const handleAddProductToCart = (product: Product) => {
-        cartPresenter.addProductToCart(product);
-    };
-
-    const handleDrawerOpen = () => {
-        cartPresenter.openCart();
-    };
-
-    const handleDrawerClose = () => {
-        cartPresenter.closeCart();
-    };
-
+const App: React.FC = () => {
     return (
-        <div>
-            <MyAppBar
-                onShoppingCartHandler={handleDrawerOpen}
-                totalCartItems={cartState.cart.totalItems}
-            />
-            <ProductList onAddProductToCart={handleAddProductToCart} />
-            <CartDrawer
-                cart={cartState.cart}
-                open={cartState.open}
-                onClose={handleDrawerClose}
-                onRemoveCartItem={handleRemoveCartItem}
-                onEditQuantityCartItem={handleEditQuantityCartItem}
-            />
-        </div>
+        <blocContext.Provider value={DependenciesProvider.provideCartBloc()}>
+            <MyAppBar />
+            <ProductList />
+            <CartDrawer />
+        </blocContext.Provider>
     );
 };
 

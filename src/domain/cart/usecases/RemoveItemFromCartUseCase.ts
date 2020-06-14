@@ -1,6 +1,5 @@
 import CartRepository from "../CartRepository";
 import Cart from "../Cart";
-import CartItem from "../CartItem";
 
 export default class RemoveItemFromCartUseCase {
     private cartRepository: CartRepository;
@@ -9,10 +8,10 @@ export default class RemoveItemFromCartUseCase {
         this.cartRepository = cartRepository;
     }
 
-    async execute(cartItem: CartItem): Promise<Cart> {
+    async execute(itemId: string): Promise<Cart> {
         const cart = await this.cartRepository.get();
 
-        const editedCart = cart.removeItem(cartItem);
+        const editedCart = cart.removeItem(itemId);
 
         await this.cartRepository.save(editedCart);
 

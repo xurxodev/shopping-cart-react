@@ -3,7 +3,7 @@ import ProductInMemoryRepository from "../data/products/ProductInMemoryRepositor
 import { ProductsBloc } from "../presentation/products/ProductsBloc";
 import GetCartUseCase from "../domain/cart/usecases/GetCartUseCase";
 import CartInMemoryRepository from "../data/cart/CartInMemoryRepository";
-import { CartPresenter } from "../presentation/cart/CartPresenter";
+import { CartBloc } from "../presentation/cart/CartBloc";
 import AddProductToCartUseCase from "../domain/cart/usecases/AddProductToCartUseCase";
 import RemoveItemFromCartUseCase from "../domain/cart/usecases/RemoveItemFromCartUseCase";
 import EditQuantityOfCartItemUseCase from "../domain/cart/usecases/EditQuantityOfCartItemUseCase";
@@ -16,13 +16,13 @@ export function provideProductsBloc(): ProductsBloc {
     return productsPresenter;
 }
 
-export function provideCartPresenter(): CartPresenter {
+export function provideCartBloc(): CartBloc {
     const cartRepository = new CartInMemoryRepository();
     const getCartUseCase = new GetCartUseCase(cartRepository);
     const addProductToCartUseCase = new AddProductToCartUseCase(cartRepository);
     const removeItemFromCartUseCase = new RemoveItemFromCartUseCase(cartRepository);
     const editQuantityOfCartItemUseCase = new EditQuantityOfCartItemUseCase(cartRepository);
-    const cartPresenter = new CartPresenter(
+    const cartPresenter = new CartBloc(
         getCartUseCase,
         addProductToCartUseCase,
         removeItemFromCartUseCase,
