@@ -3,7 +3,7 @@ import CartItem from "./CartItem";
 export default class Cart {
     items: readonly CartItem[];
     readonly totalPrice: number;
-    readonly totalItems: number; 
+    readonly totalItems: number;
 
     constructor(items: CartItem[]) {
         this.items = items;
@@ -35,15 +35,15 @@ export default class Cart {
         }
     }
 
-    removeItem(item: CartItem): Cart {
-        const newItems = this.items.filter(i => i.id !== item.id);
+    removeItem(itemId: string): Cart {
+        const newItems = this.items.filter(i => i.id !== itemId);
 
         return new Cart(newItems);
     }
 
-    editItem(item: CartItem, quantity: number): Cart {
+    editItem(itemId: string, quantity: number): Cart {
         const newItems = this.items.map((oldItem) => {
-            if (oldItem.id === item.id) {
+            if (oldItem.id === itemId) {
                 return { ...oldItem, quantity: quantity };
             } else {
                 return oldItem;
