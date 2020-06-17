@@ -80,7 +80,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 # Resources
 * [Qué es el estado en frameworks declarativos](http://xurxodev.com/estado-en-frameworks-declarativos/).
 * [Gestión simple de estado en frameworks declarativos](http://xurxodev.com/gestion-simple-de-estado-en-frameworks-declarativos/).
-* [Gestión simple de estado en React](http://xurxodev.com/gestion-simple-de-estado-en-flutter/)
+* [Gestión simple de estado en React](http://xurxodev.com/gestion-simple-de-estado-en-reactjs/)
 * [Curso Clean Architecture](http://xurxodev.com/curso-clean-architecture/)
 
 ## Libraries used in this project
