@@ -11,6 +11,17 @@ This project was bootstrapped with [Create React App](https://create-react-app.d
 ![products](https://user-images.githubusercontent.com/5593590/69054813-b0c7f080-0a0c-11ea-99e5-9af5da86d740.png)
 ![cart](https://user-images.githubusercontent.com/5593590/69054815-b0c7f080-0a0c-11ea-880d-7f902cfae00d.png)
 
+## State managements strategies
+
+* Branch [Lifting state up](https://github.com/xurxodev/shopping-cart-react/tree/lifting-state-up)
+* Branch [BLoC Pattern](https://github.com/xurxodev/shopping-cart-react/tree/bloc-pattern)
+
+## Clean Architecture
+
+All strategies uses Clean architecture
+
+![bloc-clean-architecture](https://user-images.githubusercontent.com/5593590/82728951-03ec6a00-9cf4-11ea-8557-011a3dea7804.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -64,6 +75,17 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+# Resources
+* [Qué es el estado en frameworks declarativos](/estado-en-frameworks-declarativos/).
+* [Gestión simple de estado en frameworks declarativos](/gestion-simple-de-estado-en-frameworks-declarativos/).
+* [Gestión simple de estado en ReactJS](/gestion-simple-de-estado-en-reactjs/)
+* [Gestión simple de estado en Flutter](/gestion-simple-de-estado-en-flutter/)
+* [Introducción al patrón BLoc](/introduccion-al-patron-bloc/)
+* [El Patrón Bloc en Clean Architecture](/el-patron-bloc-en-clean-architecture/)
+* [El Patrón Bloc junto a Clean Architecture en Flutter](el-patron-bloc-junto-a-clean-architecture-en-flutter)
+* [El Patrón Bloc junto a Clean Architecture en ReactJS](el-patron-bloc-junto-a-clean-architecture-en-reactjs)
+* [Curso Clean Architecture](/curso-clean-architecture)
 
 ## Libraries used in this project
 * [reactjs](https://reactjs.org/)
