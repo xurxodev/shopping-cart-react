@@ -77,15 +77,15 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 # Resources
-* [Qué es el estado en frameworks declarativos](/estado-en-frameworks-declarativos/).
-* [Gestión simple de estado en frameworks declarativos](/gestion-simple-de-estado-en-frameworks-declarativos/).
-* [Gestión simple de estado en ReactJS](/gestion-simple-de-estado-en-reactjs/)
-* [Gestión simple de estado en Flutter](/gestion-simple-de-estado-en-flutter/)
-* [Introducción al patrón BLoc](/introduccion-al-patron-bloc/)
-* [El Patrón Bloc en Clean Architecture](/el-patron-bloc-en-clean-architecture/)
-* [El Patrón Bloc junto a Clean Architecture en Flutter](el-patron-bloc-junto-a-clean-architecture-en-flutter)
-* [El Patrón Bloc junto a Clean Architecture en ReactJS](el-patron-bloc-junto-a-clean-architecture-en-reactjs)
-* [Curso Clean Architecture](/curso-clean-architecture)
+* [Qué es el estado en frameworks declarativos](http://xurxodev.com/estado-en-frameworks-declarativos/).
+* [Gestión simple de estado en frameworks declarativos](http://xurxodev.com/gestion-simple-de-estado-en-frameworks-declarativos/).
+* [Gestión simple de estado en ReactJS](http://xurxodev.com/gestion-simple-de-estado-en-reactjs/)
+* [Gestión simple de estado en Flutter](http://xurxodev.com/gestion-simple-de-estado-en-flutter/)
+* [Introducción al patrón BLoc](http://xurxodev.com/introduccion-al-patron-bloc/)
+* [El Patrón Bloc en Clean Architecture](http://xurxodev.com/el-patron-bloc-en-clean-architecture/)
+* [El Patrón Bloc junto a Clean Architecture en Flutter](http://xurxodev.com/el-patron-bloc-junto-a-clean-architecture-en-flutter)
+* [El Patrón Bloc junto a Clean Architecture en ReactJS](http://xurxodev.com/el-patron-bloc-junto-a-clean-architecture-en-reactjs)
+* [Curso Clean Architecture](http://xurxodev.com/curso-clean-architecture)
 
 ## Libraries used in this project
 * [reactjs](https://reactjs.org/)
