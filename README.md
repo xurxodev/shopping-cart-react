@@ -11,6 +11,18 @@ This project was bootstrapped with [Create React App](https://create-react-app.d
 ![products](https://user-images.githubusercontent.com/5593590/69054813-b0c7f080-0a0c-11ea-99e5-9af5da86d740.png)
 ![cart](https://user-images.githubusercontent.com/5593590/69054815-b0c7f080-0a0c-11ea-880d-7f902cfae00d.png)
 
+## State management strategy
+
+This branch use lifting state up pattern as state managemment strategy
+
+![shopping_cart_prop_drilling](https://user-images.githubusercontent.com/5593590/82729101-013e4480-9cf5-11ea-88e5-2cc05640f067.png)
+
+## Architecture
+
+This branch use Clean Architecture and BloC pattern is used as a presentation pattern.
+
+![bloc-clean-architecture](https://user-images.githubusercontent.com/5593590/82728951-03ec6a00-9cf4-11ea-8557-011a3dea7804.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -64,6 +76,12 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+# Resources
+* [Qué es el estado en frameworks declarativos](http://xurxodev.com/estado-en-frameworks-declarativos/).
+* [Gestión simple de estado en frameworks declarativos](http://xurxodev.com/gestion-simple-de-estado-en-frameworks-declarativos/).
+* [Gestión simple de estado en React](http://xurxodev.com/gestion-simple-de-estado-en-flutter/)
+* [Curso Clean Architecture](http://xurxodev.com/curso-clean-architecture/)
 
 ## Libraries used in this project
 * [reactjs](https://reactjs.org/)
