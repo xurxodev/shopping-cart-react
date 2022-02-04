@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://create-react-app.d
 
 [Live Demo](https://shopping-cart-react-lifting-state-up.netlify.com/)
 
+## Clean Architecture Course
+
+* [Curso Clean Architecture](https://xurxodev.com/curso-clean-architecture)
+
 ## Screenshots
 
 ![products](https://user-images.githubusercontent.com/5593590/69054813-b0c7f080-0a0c-11ea-99e5-9af5da86d740.png)
